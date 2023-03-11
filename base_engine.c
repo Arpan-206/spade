@@ -112,6 +112,8 @@ typedef struct {
   uint8_t  *sprite_slot_active;
   uint32_t *sprite_slot_generation;
 
+  int sd_mounted;
+
   uint16_t *map; /* indexes into sprite_pool + 1 (0 null) */
 
   int tile_size; /* how small tiles have to be to fit map on screen */
@@ -364,6 +366,10 @@ static void render_resize_legend(void) {
         // if (doodle_pane_read(od->lit , x, y)) doodle_pane_write(rd->lit , rx, ry);
       }
   }
+}
+
+WASM_EXPORT void mountSD() {
+    state->sd_mounted = 1;
 }
 
 WASM_EXPORT void render_set_background(char kind) {

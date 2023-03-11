@@ -59,6 +59,10 @@ exports.addText = (str, opts={}) => {
 
 exports.clearText = () => native.text_clear();
 
+exports.mountSD = () => {
+    console.log("engine.js:mountSD");
+    native.mountSD();
+  };
 
 exports.setLegend = (...bitmaps) => {
   console.log("engine.js:setLegend");
