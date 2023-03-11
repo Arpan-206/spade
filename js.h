@@ -62,7 +62,7 @@ static void js_run(const jerry_char_t *script, jerry_length_t script_size) {
     // abort();
   }
 
-  puts("bouta run some code");
+  // puts("bouta run some code");
   /* Execute the parsed source code in the Global scope */
   jerry_value_t ret_value = jerry_run (parsed_code);
 

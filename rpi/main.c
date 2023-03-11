@@ -267,7 +267,7 @@ int main() {
   dbg("okay launching game loop");
   while(1) {
     /* input handling */
-    puts("please tell me it's not the fifo");
+    // puts("please tell me it's not the fifo");
     while (multicore_fifo_rvalid())
       spade_call_press(multicore_fifo_pop_blocking());
 
@@ -275,10 +275,10 @@ int main() {
     absolute_time_t now = get_absolute_time();
     int elapsed = us_to_ms(absolute_time_diff_us(last, now));
     last = now;
-    puts("frame?");
+    // puts("frame?");
     spade_call_frame(elapsed);
 
-    puts("promises?");
+    // puts("promises?");
     js_promises();
 
 #if SPADE_AUDIO
@@ -286,11 +286,11 @@ int main() {
 #endif
 
     /* upload new scripts */
-    puts("not load new scripts surely?");
+    // puts("not load new scripts surely?");
     if (load_new_scripts()) break;
 
     /* render */
-    puts("uhh rendering? lol");
+    // puts("uhh rendering? lol");
     render_errorbuf();
     st7735_fill_start();
       render(write_pixel);

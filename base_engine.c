@@ -368,9 +368,7 @@ static void render_resize_legend(void) {
   }
 }
 
-WASM_EXPORT void mountSD() {
-    state->sd_mounted = 1;
-}
+
 
 WASM_EXPORT void render_set_background(char kind) {
   state->background_sprite = kind;
@@ -904,6 +902,7 @@ void solids_clear();
 // setPushables, 
 
 setBackground
+setBack
 
 map: _makeTag(text => text),
 bitmap: _makeTag(text => text),

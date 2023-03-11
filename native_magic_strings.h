@@ -24,6 +24,7 @@
 
 #define MSTR_NATIVE_setMap "setMap"
 #define MSTR_NATIVE_setBackground "setBackground"
+#define MSTR_NATIVE_setBack "setBack"
 #define MSTR_NATIVE_getFirst "getFirst"
 #define MSTR_NATIVE_clearTile "clearTile"
 #define MSTR_NATIVE_addSprite "addSprite"
@@ -32,7 +33,6 @@
 #define MSTR_NATIVE_tilesWith "tilesWith"
 #define MSTR_NATIVE_text_add "text_add"
 #define MSTR_NATIVE_text_clear "text_clear"
-#define MSTR_NATIVE_mountSD "mountSD"
 
 #define MSTR_NATIVE_width "width"
 #define MSTR_NATIVE_height "height"

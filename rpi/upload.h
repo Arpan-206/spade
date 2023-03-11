@@ -12,7 +12,7 @@ uint16_t SPRIG_MAGIC[FLASH_PAGE_SIZE/2] = { 1337, 42, 69, 420, 420, 1337 };
 
 static const char *save_read(void) {
   if (memcmp(&SPRIG_MAGIC, flash_target_contents, sizeof(SPRIG_MAGIC)) != 0) {
-    puts("no magic :(");
+    // puts("no magic :(");
     return NULL;
   }
 
@@ -60,7 +60,7 @@ static int upl_stdin_read(void) {
           upl_state.len_i++;
 
           if (upl_state.len_i == 5) {
-            puts("found startup seq!");
+            // puts("found startup seq!");
             memset(&upl_state, 0, sizeof(upl_state));
             upl_state.prog = UplProg_Header;
           }
@@ -92,19 +92,19 @@ static int upl_stdin_read(void) {
           for (int i = 0; i < sizeof(engine_script) - 1; i++) {
             upl_state.buf[upl_state.len_i++ % FLASH_PAGE_SIZE] = engine_script[i];
             if (upl_state.len_i % FLASH_PAGE_SIZE == 0) {
-              puts("flushin buf (wit da code!)");
+              // puts("flushin buf (wit da code!)");
               upl_flush_buf();
             }
           }
 
-          puts("cleared flash");
+          // puts("cleared flash");
         }
       } break;
       case UplProg_Body: {
         // printf("upl char (%d/%d)\n", upl_state.len_i, upl_state.len);
         upl_state.buf[upl_state.len_i++ % FLASH_PAGE_SIZE] = c;
         if (upl_state.len_i % FLASH_PAGE_SIZE == 0) {
-          puts("flushin buf");
+          // puts("flushin buf");
           upl_flush_buf();
         }
 
@@ -116,7 +116,7 @@ static int upl_stdin_read(void) {
           restore_interrupts(interrupts);
           
           // printf("read in %d chars\n", upl_state.len);
-          puts("ALL_GOOD");
+          // puts("ALL_GOOD");
           memset(&upl_state, 0, sizeof(upl_state));
 
           multicore_launch_core1(core1_entry);
@@ -126,5 +126,5 @@ static int upl_stdin_read(void) {
       } break;
     }
   }
-  puts("end of upl_stdin_read");
+  // puts("end of upl_stdin_read");
 }

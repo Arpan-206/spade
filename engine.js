@@ -35,6 +35,7 @@ exports.getAll = native.getAll;
 exports.width = native.width;
 exports.height = native.height;
 exports.setBackground = native.setBackground;
+exports.setBack = native.setBack;
 exports.playTune = (str, times) => {
   native.piano_queue_song(str, times);
   return {
@@ -58,11 +59,6 @@ exports.addText = (str, opts={}) => {
 }
 
 exports.clearText = () => native.text_clear();
-
-exports.mountSD = () => {
-    console.log("engine.js:mountSD");
-    native.mountSD();
-  };
 
 exports.setLegend = (...bitmaps) => {
   console.log("engine.js:setLegend");

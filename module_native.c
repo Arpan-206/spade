@@ -62,6 +62,14 @@ JERRYXX_FUN(setBackground)
     return jerry_create_undefined();
 }
 
+JERRYXX_FUN(setBack)
+{
+
+    dbg("module_native::setBack");
+    render_set_background(jerry_value_to_char(JERRYXX_GET_ARG(0)));
+    return jerry_create_undefined();
+}
+
 JERRYXX_FUN(native_legend_doodle_set_fn)
 {
 
@@ -90,15 +98,7 @@ JERRYXX_FUN(native_press_cb_fn)
     return jerry_create_undefined();
 }
 
-JERRYXX_FUN(native_mountSD_fn)
-{
 
-    dbg("module_native::native_mountSD_fn");
-
-    printf("Hi");
-
-    return jerry_create_undefined();
-}
 
 JERRYXX_FUN(native_frame_cb_fn)
 {
@@ -580,13 +580,13 @@ JERRYXX_FUN(getTile)
     m = (MapIter){.x = x, .y = y};
     while (map_get_grid(&m) && (m.sprite->x == x && m.sprite->y == y))
     {
-        puts("making sprite obj");
+        // puts("making sprite obj");
         jerry_value_t sprite = sprite_to_jerry_object(m.sprite);
         jerry_release_value(jerry_set_property_by_index(ret, i++, sprite));
         jerry_release_value(sprite);
     }
 
-    puts("and we out");
+    // puts("and we out");
     return ret;
 }
 
@@ -740,12 +740,12 @@ static void module_native_init(jerry_value_t exports)
     jerryxx_set_property_function(exports, MSTR_NATIVE_width, width);
     jerryxx_set_property_function(exports, MSTR_NATIVE_height, height);
     jerryxx_set_property_function(exports, MSTR_NATIVE_setBackground, setBackground);
+    jerryxx_set_property_function(exports, MSTR_NATIVE_setBack, setBack);
     jerryxx_set_property_function(exports, MSTR_NATIVE_getTile, getTile);
     jerryxx_set_property_function(exports, MSTR_NATIVE_clearTile, clearTile);
     jerryxx_set_property_function(exports, MSTR_NATIVE_addSprite, addSprite);
     jerryxx_set_property_function(exports, MSTR_NATIVE_text_add, native_text_add_fn);
     jerryxx_set_property_function(exports, MSTR_NATIVE_text_clear, native_text_clear_fn);
-    jerryxx_set_property_function(exports, MSTR_NATIVE_mountSD,     native_mountSD_fn);
 
     /* random background goodie */
     jerryxx_set_property_function(exports, MSTR_NATIVE_map_clear_deltas, native_map_clear_deltas_fn);

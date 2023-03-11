@@ -246,7 +246,7 @@ void jerryxx_print_error(jerry_value_t value, bool print_stacktrace) {
   }
   jerry_release_value(error_value);
 
-  puts("err:");
+  // puts("err:");
   puts(errorbuf);
 }
 

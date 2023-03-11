@@ -142,7 +142,7 @@ static int32_t piano_compute_sample(Song *song) {
     /* pull the song into this buf so we can read next chord */
     char char_source[2048] = {0};
     if (!piano_state.opts.song_chars(song->char_source, char_source, 2048)) {
-      puts("song exceeds 2k chars, not playing");
+      // puts("song exceeds 2k chars, not playing");
       return 0;
     }
 
@@ -170,7 +170,7 @@ static int32_t piano_compute_sample(Song *song) {
               nrs_ret->sound.sound
             );
           } else {
-            puts("wow too many notes");
+            // puts("wow too many notes");
           }
         }
         if (nrs_ret->kind == NrsRetKind_Pause) {
